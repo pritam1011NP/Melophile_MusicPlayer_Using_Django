@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Melophile</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+
+  <!-- MediaElement -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" rel="stylesheet" />
+
+  <!-- App CSS -->
+  <link href="{% static './style.css' %}" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Top bar -->
+  <header class="tf-header glass">
+    <div class="brand">
+      <span class="dot"></span>
+      <h2>Melophile</h2>
+    </div>
+    <div class="header-actions">
+      <button id="themeToggle" class="btn ghost" aria-label="Toggle theme" title="Toggle theme">
+        <i class="fa fa-moon-o" aria-hidden="true"></i>
+      </button>
+      <a class="btn primary" href="{% if page_obj.has_previous %}?page={{ page_obj.previous_page_number }}{% endif %}" title="Previous">
+        <i class="fa fa-step-backward"></i>
+      </a>
+      <a class="btn primary" href="{% if page_obj.has_next %}?page={{ page_obj.next_page_number }}{% endif %}" title="Next">
+        <i class="fa fa-step-forward"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main content (kept as include) -->
+  <main class="tf-shell">
+    {% include 'main.html' %}
+  </main>
+
+  <!-- Footer tips -->
+  <footer class="tf-footer">
+    <div class="kbd-row">
+      <span class="kbd">Space</span> Play/Pause
+      <span class="dot-sep"></span>
+      <span class="kbd">←/→</span> Seek 5s
+      <span class="dot-sep"></span>
+      <span class="kbd">↑/↓</span> Volume
+      <span class="dot-sep"></span>
+      <span class="kbd">N/P</span> Next/Prev
+    </div>
+  </footer>
+
+  <!-- Libs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelement-and-player.min.js"></script>
+
+  <!-- App JS -->
+  <script src="{% static './script.js' %}"></script>
+</body>
+</html>
