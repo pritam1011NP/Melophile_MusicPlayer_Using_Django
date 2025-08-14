@@ -1,0 +1,185 @@
+/* ===== Base ===== */
+*:focus { outline: none; }
+:root {
+  --bg: #0b0b0d;
+  --panel: rgba(255,255,255,0.06);
+  --text: #f5f7fb;
+  --muted: #b8c0d0;
+  --accent: #5BBB95; /* legacy brand accent still used subtly */
+  --glow1: #8a5cff;
+  --glow2: #00e3ff;
+  --glow3: #00ffe5;
+  --card-radius: 22px;
+  --shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+html[data-theme="light"] {
+  --bg: #f6f7fb;
+  --panel: rgba(15, 15, 20, 0.05);
+  --text: #17171b;
+  --muted: #556070;
+}
+
+html { background: var(--bg); }
+body {
+  margin: 0;
+  font-family: "Inter", "Raleway", sans-serif;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Header ===== */
+.tf-header {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px; margin: 14px;
+  border-radius: var(--card-radius);
+  backdrop-filter: blur(18px);
+}
+.glass {
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.brand { display:flex; align-items:center; gap:10px; }
+.brand h2 { margin: 0; font-weight: 800; letter-spacing: 0.5px; }
+.brand .dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: linear-gradient(135deg,var(--glow1),var(--glow2),var(--glow3));
+  box-shadow: 0 0 16px var(--glow2), 0 0 28px var(--glow1);
+}
+.header-actions { display:flex; align-items:center; gap:10px; }
+
+/* ===== Buttons ===== */
+.btn {
+  border: 1px solid rgba(255,255,255,0.12);
+  background: transparent;
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+  display:inline-flex; align-items:center; gap:8px; text-decoration:none;
+}
+.btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.25); }
+.btn.primary {
+  background: linear-gradient(135deg,var(--glow1),var(--glow2));
+  border-color: transparent; color: #fff;
+}
+.btn.primary:hover { filter: brightness(1.1); }
+.btn.ghost { background: rgba(255,255,255,0.06); }
+.btn.icon { width:40px; height:40px; justify-content:center; padding:0; }
+
+/* ===== Layout ===== */
+.tf-shell { padding: 6px 14px 18px; }
+.tf-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 18px;
+}
+@media (max-width: 980px) {
+  .tf-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== Player Card ===== */
+.Melophile {
+  position: relative;
+  width: 100%;
+  min-height: 640px;
+  border-radius: var(--card-radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+}
+.cover { width:100%; height: 52%; position: relative; overflow: hidden; border-radius: var(--card-radius) var(--card-radius) 0 0; }
+.cover img {
+  position: absolute; inset: 0; margin: auto; width: 100%; height: 100%; object-fit: cover;
+  transform: scale(1); transition: transform .6s ease;
+}
+.cover:hover img { transform: scale(1.06); }
+.titre { padding: 16px 18px 4px; }
+.titre h3 { margin: 0; font-size: 14px; font-weight:600; color: var(--muted); }
+.titre h1 { margin: 6px 0 0; font-size: 28px; }
+
+/* Controls row */
+.tf-controls {
+  display:flex; align-items:center; gap:10px;
+  padding: 8px 12px 4px 12px;
+}
+.tf-controls .time { margin-left: auto; display:flex; align-items:center; gap:6px; color: var(--muted); }
+.tf-controls .time .sep { opacity: .6; }
+.tf-controls .vol { display:flex; align-items:center; gap:8px; margin-left: 8px; }
+#volRange { width: 110px; accent-color: var(--glow2); }
+
+/* Waveform */
+.wave {
+  width: calc(100% - 24px);
+  margin: 8px 12px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+/* ===== Right / Lyrics ===== */
+.right-section {
+  height: auto; min-height: 640px; padding: 16px;
+  border-radius: var(--card-radius);
+  background:
+    radial-gradient(1200px 400px at -10% -10%, rgba(138,92,255,.16), transparent 60%),
+    radial-gradient(1000px 400px at 120% 110%, rgba(0,227,255,.14), transparent 60%),
+    var(--panel);
+}
+.lyrics-header { display:flex; justify-content: space-between; align-items:center; margin-bottom: 8px; }
+.badge {
+  padding: 6px 10px; border-radius: 999px; font-size: 12px; font-weight: 700;
+  background: rgba(255,255,255,0.08); color: #fff; letter-spacing: .3px;
+}
+.badge.glow { box-shadow: 0 0 18px rgba(0,227,255,.55), 0 0 28px rgba(138,92,255,.35) inset; }
+.scroll-note { color: var(--muted); font-size: 12px; }
+
+.lyrics-container {
+  height: 520px; overflow: auto; padding: 8px 6px 12px 2px;
+  scroll-behavior: smooth;
+}
+.lyrics {
+  font-family: "Calibri", sans-serif;
+  font-size: 40px;
+  color: #00ffea;
+  line-height: 1.35;
+  word-break: break-word;
+}
+.lyrics .line {
+  margin: 10px 0; opacity: .45; transition: opacity .25s ease, transform .25s ease;
+}
+.lyrics .line:hover { opacity: .7; cursor: pointer; }
+.lyrics .line.active {
+  opacity: 1; transform: translateX(2px);
+  text-shadow:
+    0 0 8px rgba(255, 0, 174, 0.6),
+    0 0 18px rgba(0,227,255,.35);
+}
+
+/* ===== Footer / KBD ===== */
+.tf-footer { display:flex; justify-content:center; padding: 10px 0 24px; color: var(--muted); }
+.kbd-row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+.kbd {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.07);
+  border-bottom-width: 2px;
+  padding: 2px 6px; border-radius: 6px; font-size: 12px; color: var(--text);
+}
+.dot-sep::before {
+  content: "•"; opacity: .35; padding: 0 2px;
+}
+
+/* ===== Override some MediaElement defaults to be minimal ===== */
+.mejs__container { background: transparent; min-width: auto !important; }
+.mejs__controls { background: transparent !important; padding: 0 12px 14px; }
+.mejs__controls .mejs__playpause-button button,
+.mejs__controls .mejs__volume-button button { color: var(--accent); }
+.mejs__time { color: var(--muted); }
+
+/* Scrollbar subtle */
+.lyrics-container::-webkit-scrollbar { width: 10px; }
+.lyrics-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg,var(--glow1),var(--glow2)); border-radius: 10px;
+}
