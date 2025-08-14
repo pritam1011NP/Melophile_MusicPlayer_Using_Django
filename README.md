@@ -111,6 +111,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Your Name - your.email@example.com
+Your Name - pritammajumder792@gmail.com
 
-Project Link: [https://github.com/yourusername/lrc-parser](https://github.com/yourusername/lrc-parser)
+Project Link: https://github.com/pritam1011NP/Melophile_MusicPlayer_Using_Django
+
