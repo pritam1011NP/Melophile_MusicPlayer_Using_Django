@@ -1,9 +1,12 @@
-# Melophile
+ <h1 align="center"> 🎶 Melophile 🎶 </br> 
+</h1>
+
+ ![Image Alt](https://github.com/pritam1011NP/Melophile_MusicPlayer_Using_Django/blob/9d12fe552aba5bb20b8668ce10b79b9ae7287b9d/Samples/fornt.png)
 
 A Python utility for parsing and processing LRC (lyrics) files with Django integration.
 
 ## Features
-
+- Listen song smoothly 
 - Parse LRC files and extract lyrics data
 - Process and analyze lyrics content
 - Django integration for web-based lyrics management
@@ -114,4 +117,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 Your Name - pritammajumder792@gmail.com
 
 Project Link: https://github.com/pritam1011NP/Melophile_MusicPlayer_Using_Django
+
 
